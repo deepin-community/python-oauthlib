@@ -1,0 +1,48 @@
+Source: python-oauthlib
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Daniele Tricoli <eriol@debian.org>
+Section: python
+Priority: optional
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-blinker,
+ python3-cryptography,
+ python3-jwt (>= 1.0.0),
+ python3-pytest (>= 4.0),
+ python3-setuptools
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Homepage: https://github.com/idan/oauthlib
+Vcs-Git: https://salsa.debian.org/python-team/packages/python-oauthlib.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/python-oauthlib
+
+Package: python3-oauthlib
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ python3-blinker,
+ python3-cryptography,
+ python3-jwt (>= 1.0.0)
+Description: generic, spec-compliant implementation of OAuth for Python3
+ OAuthLib is a generic utility which implements the logic of OAuth without
+ assuming a specific HTTP request object. It can be used to graft OAuth support
+ onto HTTP libraries.
+ .
+ OAuth 1 is fully supported per the RFC for both clients and providers.
+ .
+ OAuth 2 client and provider support for:
+ .
+   - Authorization Code Grant
+   - Implicit Grant
+   - Client Credentials Grant
+   - Resource Owner Password Credentials Grant
+   - Refresh Tokens
+   - Bearer Tokens
+   - Draft MAC tokens
+   - Token Revocation
+   - OpenID Connect Authentication
+ .
+ This package contains the Python 3 version of the library.
