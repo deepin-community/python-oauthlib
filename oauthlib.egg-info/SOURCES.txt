@@ -58,6 +58,9 @@ oauthlib/oauth2/rfc6749/grant_types/client_credentials.py
 oauthlib/oauth2/rfc6749/grant_types/implicit.py
 oauthlib/oauth2/rfc6749/grant_types/refresh_token.py
 oauthlib/oauth2/rfc6749/grant_types/resource_owner_password_credentials.py
+oauthlib/oauth2/rfc8628/__init__.py
+oauthlib/oauth2/rfc8628/clients/__init__.py
+oauthlib/oauth2/rfc8628/clients/device.py
 oauthlib/openid/__init__.py
 oauthlib/openid/connect/__init__.py
 oauthlib/openid/connect/core/__init__.py
@@ -73,6 +76,7 @@ oauthlib/openid/connect/core/grant_types/base.py
 oauthlib/openid/connect/core/grant_types/dispatchers.py
 oauthlib/openid/connect/core/grant_types/hybrid.py
 oauthlib/openid/connect/core/grant_types/implicit.py
+oauthlib/openid/connect/core/grant_types/refresh_token.py
 tests/__init__.py
 tests/test_common.py
 tests/test_uri_validate.py
@@ -122,6 +126,9 @@ tests/oauth2/rfc6749/grant_types/test_client_credentials.py
 tests/oauth2/rfc6749/grant_types/test_implicit.py
 tests/oauth2/rfc6749/grant_types/test_refresh_token.py
 tests/oauth2/rfc6749/grant_types/test_resource_owner_password.py
+tests/oauth2/rfc8628/__init__.py
+tests/oauth2/rfc8628/clients/__init__.py
+tests/oauth2/rfc8628/clients/test_device.py
 tests/openid/__init__.py
 tests/openid/connect/__init__.py
 tests/openid/connect/core/__init__.py
@@ -138,4 +145,5 @@ tests/openid/connect/core/grant_types/test_base.py
 tests/openid/connect/core/grant_types/test_dispatchers.py
 tests/openid/connect/core/grant_types/test_hybrid.py
 tests/openid/connect/core/grant_types/test_implicit.py
+tests/openid/connect/core/grant_types/test_refresh_token.py
 tests/unittest/__init__.py

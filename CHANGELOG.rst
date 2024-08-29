@@ -1,6 +1,45 @@
 Changelog
 =========
 
+3.2.2 (2022-10-17)
+------------------
+OAuth2.0 Provider:
+* CVE-2022-36087
+
+3.2.1 (2022-09-09)
+------------------
+OAuth2.0 Provider:
+* #803: Metadata endpoint support of non-HTTPS
+
+OAuth1.0:
+* #818: Allow IPv6 being parsed by signature
+
+General:
+* Improved and fixed documentation warnings.
+* Cosmetic changes based on isort
+
+3.2.0 (2022-01-29)
+------------------
+OAuth2.0 Client:
+* #795: Add Device Authorization Flow for Web Application
+* #786: Add PKCE support for Client
+* #783: Fallback to none in case of wrong expires_at format.
+
+OAuth2.0 Provider:
+* #790: Add support for CORS to metadata endpoint.
+* #791: Add support for CORS to token endpoint.
+* #787: Remove comma after Bearer in WWW-Authenticate
+
+OAuth2.0 Provider - OIDC:
+  * #755: Call save_token in Hybrid code flow
+  * #751: OIDC add support of refreshing ID Tokens with `refresh_id_token`
+  * #751: The RefreshTokenGrant modifiers now take the same arguments as the
+    AuthorizationCodeGrant modifiers (`token`, `token_handler`, `request`).
+
+General:
+  * Added Python 3.9, 3.10, 3.11
+  * Improve Travis & Coverage
+
 3.1.1 (2021-05-31)
 ------------------
 OAuth2.0 Provider - Bugfixes
@@ -124,7 +163,7 @@ OAuth1.0 Client:
 General fixes:
 
 * $ and ' are allowed to be unencoded in query strings #564
-* Request attributes are no longer overriden by HTTP Headers #409
+* Request attributes are no longer overridden by HTTP Headers #409
 * Removed unnecessary code for handling python2.6
 * Add support of python3.7 #621
 * Several minors updates to setup.py and tox
@@ -182,7 +221,7 @@ General fixes:
 * Added log statements to except clauses.
 * According to RC7009 Section 2.1, a client should include authentication credentials when revoking its tokens.
   As discussed in #339, this is not make sense for public clients.
-  However, in that case, the public client should still be checked that is infact a public client (authenticate_client_id).
+  However, in that case, the public client should still be checked that is in fact a public client (authenticate_client_id).
 * Improved prompt parameter validation.
 * Added two error codes from RFC 6750.
 * Hybrid response types are now be fragment-encoded.
@@ -332,7 +371,7 @@ Quick fix. OAuth 1 client repr in 0.6.2 overwrote secrets when scrubbing for pri
 Draft revocation endpoint features and numerous fixes including:
 
 * (OAuth 2 Provider) is_within_original_scope to check whether a refresh token
-  is trying to aquire a new set of scopes that are a subset of the original scope.
+  is trying to acquire a new set of scopes that are a subset of the original scope.
 
 * (OAuth 2 Provider) expires_in token lifetime can be set per request.
 
