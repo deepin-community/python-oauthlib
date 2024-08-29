@@ -301,3 +301,55 @@ class ClientTest(TestCase):
         self.assertEqual(u, url)
         self.assertEqual(h, {'Content-Type': 'application/x-www-form-urlencoded'})
         self.assertFormBodyEqual(b, 'grant_type=refresh_token&scope={}&refresh_token={}'.format(scope, token))
+
+    def test_parse_token_response_invalid_expires_at(self):
+        token_json = ('{   "access_token":"2YotnFZFEjr1zCsicMWpAA",'
+                      '    "token_type":"example",'
+                      '    "expires_at":"2006-01-02T15:04:05Z",'
+                      '    "scope":"/profile",'
+                      '    "example_parameter":"example_value"}')
+        token = {
+            "access_token": "2YotnFZFEjr1zCsicMWpAA",
+            "token_type": "example",
+            "expires_at": "2006-01-02T15:04:05Z",
+            "scope": ["/profile"],
+            "example_parameter": "example_value"
+        }
+
+        client = Client(self.client_id)
+
+        # Parse code and state
+        response = client.parse_request_body_response(token_json, scope=["/profile"])
+        self.assertEqual(response, token)
+        self.assertEqual(None, client._expires_at)
+        self.assertEqual(client.access_token, response.get("access_token"))
+        self.assertEqual(client.refresh_token, response.get("refresh_token"))
+        self.assertEqual(client.token_type, response.get("token_type"))
+
+
+    def test_create_code_verifier_min_length(self):
+        client = Client(self.client_id)
+        length = 43
+        code_verifier = client.create_code_verifier(length=length)
+        self.assertEqual(client.code_verifier, code_verifier)
+
+    def test_create_code_verifier_max_length(self):
+        client = Client(self.client_id)
+        length = 128
+        code_verifier = client.create_code_verifier(length=length)
+        self.assertEqual(client.code_verifier, code_verifier)
+
+    def test_create_code_challenge_plain(self):
+        client = Client(self.client_id)
+        code_verifier = client.create_code_verifier(length=128)
+        code_challenge_plain = client.create_code_challenge(code_verifier=code_verifier)
+
+        # if no code_challenge_method specified, code_challenge = code_verifier
+        self.assertEqual(code_challenge_plain, client.code_verifier)
+        self.assertEqual(client.code_challenge_method, "plain")
+
+    def test_create_code_challenge_s256(self):
+        client = Client(self.client_id)
+        code_verifier = client.create_code_verifier(length=128)
+        code_challenge_s256 = client.create_code_challenge(code_verifier=code_verifier, code_challenge_method='S256')
+        self.assertEqual(code_challenge_s256, client.code_challenge)
