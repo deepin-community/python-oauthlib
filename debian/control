@@ -5,15 +5,15 @@ Section: python
 Priority: optional
 Build-Depends:
  debhelper-compat (= 13),
- dh-python,
+ dh-sequence-python3,
+ pybuild-plugin-pyproject,
  python3-all,
  python3-blinker,
  python3-cryptography,
- python3-exceptiongroup,
  python3-jwt,
- python3-pytest (>= 4.0),
+ python3-pytest (>= 8.0),
  python3-setuptools
-Standards-Version: 4.6.1
+Standards-Version: 4.7.2
 Rules-Requires-Root: no
 Homepage: https://github.com/idan/oauthlib
 Vcs-Git: https://salsa.debian.org/python-team/packages/python-oauthlib.git
